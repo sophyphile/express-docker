@@ -1,0 +1,26 @@
+services:
+  express-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=sami
+      - MONGO_PASSWORD=samipassword
+      - SESSION_SECRET=secret
+    command: npm run dev
+
+  nginx:
+    ports:
+      - "3000:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+  mongodb:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sami
+      - MONGO_INITDB_ROOT_PASSWORD=samipassword

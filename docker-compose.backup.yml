@@ -1,0 +1,15 @@
+version: "3"
+
+# Now we'll specify all the containers we want to create. Each container is referred to as a service.
+services:
+  express-app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+    # environment:
+    #   - PORT=3000
+    env_file:
+      - ./.env

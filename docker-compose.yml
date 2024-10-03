@@ -1,0 +1,24 @@
+services:
+  express-app:
+    build: .
+    environment:
+      - PORT=3000
+    depends_on:
+      - mongodb
+
+  nginx:
+    image: nginx:stable-alpine
+
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sami
+      - MONGO_INITDB_ROOT_PASSWORD=samipassword
+    volumes:
+      - mongo-db:/data/db
+
+  redis:
+    image: redis
+
+volumes:
+  mongo-db:

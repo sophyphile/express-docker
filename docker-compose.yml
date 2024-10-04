@@ -1,6 +1,7 @@
 services:
   express-app:
     build: .
+    image: sophyphile/express-app
     environment:
       - PORT=3000
     depends_on:

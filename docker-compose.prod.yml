@@ -5,6 +5,13 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
   express-app:
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: any # any reason it goes down
+      update_config:
+        parallelism: 2
+        delay: 15s
     build:
       context: .
       args:

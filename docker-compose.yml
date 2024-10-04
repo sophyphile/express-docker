@@ -13,8 +13,8 @@ services:
   mongodb:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=sami
-      - MONGO_INITDB_ROOT_PASSWORD=samipassword
+      MONGO_INITDB_ROOT_USERNAME: sami
+      MONGO_INITDB_ROOT_PASSWORD: samipassword
     volumes:
       - mongo-db:/data/db
 

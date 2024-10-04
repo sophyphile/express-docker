@@ -11,10 +11,11 @@ services:
     image: nginx:stable-alpine
 
   mongodb:
-    image: mongo
+    image: mongo:4.2.23-rc0-bionic
+    # image: mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: sami
-      MONGO_INITDB_ROOT_PASSWORD: samipassword
+      - MONGO_INITDB_ROOT_USERNAME: sami
+      - MONGO_INITDB_ROOT_PASSWORD: samipassword
     volumes:
       - mongo-db:/data/db
 
